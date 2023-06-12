@@ -1,3 +1,6 @@
+Note: Coinbase Pro is now Coinbase Advanced.
+Original ReadMe:
+
 # cbpro++
 A Coinbase Pro API client library for C++ (C++17). 
 

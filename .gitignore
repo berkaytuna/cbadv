@@ -3,3 +3,5 @@ run.sh
 cmake-build-debug/
 install/
 output/
+.vs/
+out/

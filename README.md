@@ -2,7 +2,7 @@
 Update 2: Added Windows and conan support.
 <br /> Update 1: Coinbase Pro is now Coinbase Advanced.
 
-Note that, i am not maintaining this or anything, i am developing it for my own needs and just cant be bothered with private repositories.
+Note that, i am not maintaining this or anything, i am developing it for my own needs and just cant be bothered with private repositories. So, if you try this on your system and it does not work, or if you have a request, i am not the contact person for sure.
 
 Original:
 

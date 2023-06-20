@@ -1,6 +1,6 @@
 ## Changes to Original
 Update 2: Added Windows and conan support.
-Update 1: Coinbase Pro is now Coinbase Advanced.
+<br /> Update 1: Coinbase Pro is now Coinbase Advanced.
 
 Original:
 

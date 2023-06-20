@@ -2,7 +2,8 @@
 Update 2: Added Windows and conan support.
 <br /> Update 1: Coinbase Pro is now Coinbase Advanced.
 
-Original:
+Note that, i am not maintaining this or anything, i am developing it for my own needs and just cant be bothered with private repositories.
+<br />Original:
 
 # cbpro++
 A Coinbase Pro API client library for C++ (C++17). 

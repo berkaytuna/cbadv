@@ -19,7 +19,7 @@ namespace orders {
             target += productId;
         }
 
-        auto resp = httpClient->makeRequest(target, "", HttpClient::RequestVerb::DELETE);
+        auto resp = httpClient->makeRequest(target, "", HttpClient::RequestVerb::Delete);
         return !resp.get_optional<bool>("error");
 
     }
@@ -34,7 +34,7 @@ namespace orders {
         }
 
         std::vector<std::string> orders;
-        auto resp = httpClient->makeRequest(target, "", HttpClient::RequestVerb::DELETE);
+        auto resp = httpClient->makeRequest(target, "", HttpClient::RequestVerb::Delete);
         for (auto &order : resp) {
             orders.push_back(order.second.data());
         }
@@ -89,7 +89,7 @@ namespace orders {
         auto jsonBody = jsonStream.str();
         boost::replace_all(jsonBody, "\n", "");
 
-        auto resp = httpClient->makeRequest(target, jsonBody, HttpClient::RequestVerb::POST);
+        auto resp = httpClient->makeRequest(target, jsonBody, HttpClient::RequestVerb::Post);
         responses::order order(resp);
         return order;
     }
@@ -156,7 +156,7 @@ namespace orders {
         auto jsonBody = jsonStream.str();
         boost::replace_all(jsonBody, "\n", "");
 
-        auto resp = httpClient->makeRequest(target, jsonBody, HttpClient::RequestVerb::POST);
+        auto resp = httpClient->makeRequest(target, jsonBody, HttpClient::RequestVerb::Post);
         responses::order order(resp);
         return order;
     }
@@ -189,7 +189,7 @@ namespace orders {
         }
 
         std::vector<responses::order> orders;
-        auto resp = httpClient->makeRequest(target, "", HttpClient::RequestVerb::GET);
+        auto resp = httpClient->makeRequest(target, "", HttpClient::RequestVerb::Get);
         for (const auto &ord : resp) {
             responses::order order(ord.second);
             orders.push_back(order);
@@ -207,7 +207,7 @@ namespace orders {
             target += "client:";
         }
         target += orderId;
-        auto resp = httpClient->makeRequest(target, "", HttpClient::RequestVerb::GET);
+        auto resp = httpClient->makeRequest(target, "", HttpClient::RequestVerb::Get);
         responses::order order(resp);
         return order;
     }

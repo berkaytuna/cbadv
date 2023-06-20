@@ -39,8 +39,11 @@ public:
 
     ~HttpClient();
 
-    enum class RequestVerb {
-        GET, POST, DELETE
+    enum class RequestVerb
+    {
+        Get,
+        Post,
+        Delete
     }; // scoped enum
 
     pt::ptree makeRequest(const std::string &target);

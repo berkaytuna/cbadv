@@ -29,15 +29,15 @@
                 "PATH": "$env{HOME}/ninja/bin:$penv{PATH}"
             }
         }
-    ],
-    "buildPresets": [
-        {
-            "name": "x64-Debug",
-            "configurePreset": "x64-Debug"
-        },
-        {
-            "name": "x64-Release",
-            "configurePreset": "x64-Release"
-        }
-    ]
+    ]//,
+    //"buildPresets": [
+    //    {
+    //        "name": "x64-Debug",
+    //        "configurePreset": "x64-Debug"
+    //    },
+    //    {
+    //        "name": "x64-Release",
+    //        "configurePreset": "x64-Release"
+    //    }
+    //]
 }

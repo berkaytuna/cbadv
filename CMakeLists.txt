@@ -30,39 +30,48 @@ find_package(Threads REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(Boost REQUIRED)
 
-add_library(cbpro++ ${cbpro++_SOURCES} ${cbpro++_PUBLIC_HEADERS} ${cbpro++_PRIVATE_HEADERS})
-
-target_link_libraries(cbpro++ PRIVATE OpenSSL::SSL OpenSSL::Crypto ${CMAKE_THREAD_LIBS_INIT} ${BOOST_INCLUDE_LIBS})
-target_include_directories(cbpro++ PRIVATE SYSTEM ${OPENSSL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-
-target_include_directories(
-        cbpro++
-        PUBLIC
+add_library(cbpro++
+    STATIC
+        ${cbpro++_SOURCES}
+        ${cbpro++_PUBLIC_HEADERS}
+        ${cbpro++_PRIVATE_HEADERS})
+target_include_directories(cbpro++
+    PRIVATE
+        SYSTEM
+        ${OPENSSL_INCLUDE_DIR}
+        ${Boost_INCLUDE_DIRS}
+    PUBLIC
         "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
+target_link_libraries(cbpro++
+    PRIVATE
+        OpenSSL::SSL
+        OpenSSL::Crypto
+        ${CMAKE_THREAD_LIBS_INIT}
+        ${BOOST_INCLUDE_LIBS})
 
 #target_compile_options(cbpro++ PRIVATE -Wall)
 
-install(DIRECTORY include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
-install(TARGETS cbpro++
-        EXPORT cbpro++_export
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        )
-
-configure_file("cmake/cbpro++-config.cmake.in"
-        "${CMAKE_CURRENT_BINARY_DIR}/cbpro++-config.cmake" @ONLY)
-
-install(
-        EXPORT cbpro++_export
-        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/cbpro++"
-        NAMESPACE "cbpro++::"
-        FILE cbpro++-targets.cmake
-)
-
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/cbpro++-config.cmake"
-        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/cbpro++")
+#install(DIRECTORY include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+#install(TARGETS cbpro++
+#        EXPORT cbpro++_export
+#        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+#        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#        )
+#
+#configure_file("cmake/cbpro++-config.cmake.in"
+#        "${CMAKE_CURRENT_BINARY_DIR}/cbpro++-config.cmake" @ONLY)
+#
+#install(
+#        EXPORT cbpro++_export
+#        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/cbpro++"
+#        NAMESPACE "cbpro++::"
+#        FILE cbpro++-targets.cmake
+#)
+#
+#install(FILES "${CMAKE_CURRENT_BINARY_DIR}/cbpro++-config.cmake"
+#        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/cbpro++")
 
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "cbpro++")
 SET(CPACK_PACKAGE_VENDOR "bbottoml")
